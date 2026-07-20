@@ -1,8 +1,9 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.ArrayList;
+
+
 class Student {
-    int id;
+    int id; 
     String name;
     int age;
     double cgpa;
@@ -23,8 +24,7 @@ public class StudentManager{
       ArrayList<Student> student = new ArrayList<>();
 
       
-      //Student[] student = new Student[100];
-      //int count =0;
+   
 
       while(true){
       System.out.println("=========================");
@@ -53,8 +53,7 @@ public class StudentManager{
       student.add(new Student(id, name, age, cgpa));
 
  
-      //student[count]=new Student(id,name, age, cgpa);
-      //count++;
+    
 
       
       System.out.println("\nStudent Added Successfully!");
@@ -63,34 +62,29 @@ public class StudentManager{
 
       
         case 2:
-    
+    if (student.isEmpty()) {
+        System.out.println("Not Student to Delete");
+        break;
+    }
 
-     if (student.isEmpty()) {
-           System.out.println("No student to delete");
-    
-    System.out.println("Enter ID to be removed");
-    int toremove=sc.nextInt();
+    System.out.println("Enter Student ID to be removed:");
+    int toremove = sc.nextInt();
 
-           if (student.contains(toremove)) {
-            for(int i=0;i>=student.size();i++){
-                if(student.get(i.id=toremove)){
-                    student.remove(i);
-                    System.out.println("Student Succesfully deleted");
-                }
-            }
-           }
-           else
-            System.out.println("Enter the id of existing student");
+    boolean found=false;
+    for(int i=0;i<student.size();i++){
+        if(student.get(i).id==toremove){
+            student.remove(i);
+            found=true;
+            System.out.println("Removed student succesfully");
+            break;
+        }
+    }
+
+    if (!found) {
+        System.out.println("Student not found");
+    }
           
-    //         }
-    //         else{
-    //            for (int j = 0; j < count - 1; j++) {
-    //         student[j] = student[j + 1];
-    //     }
-    //     student[count - 1] = null;
-    //     count--;
-    // }
-    //     System.out.println("Student deleted.");
+  
         break;
             
 
@@ -105,7 +99,7 @@ public class StudentManager{
 
         else{ 
             System.out.println("--------Student List--------");
-            for(int i=0;i<=student.size();i++){
+            for(int i=0;i<student.size();i++){
                 Student s = student.get(i);
                 System.out.println(s.name);
                 System.out.println(s.age);
@@ -121,7 +115,7 @@ public class StudentManager{
         case 4:
             System.out.println("Thank You");
                sc.close();
-            break;
+            return;
 
         default:
             System.out.println("Enter a valic choice");

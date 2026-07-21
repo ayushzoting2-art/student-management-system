@@ -37,10 +37,18 @@ public class StudentManager{
      
       switch (choice) {
       case 1:
+         
       System.out.println("Enter ID");
       int id =sc.nextInt();
       sc.nextLine();
-
+      
+      for (Student s : student) {
+            if (s.id==id) {
+                System.out.println("ID already exists");
+                break;
+            }
+        }
+     
       System.out.println("Enter Name");
       String name=sc.nextLine();
 
@@ -57,8 +65,9 @@ public class StudentManager{
 
       
       System.out.println("\nStudent Added Successfully!");
+      
             break;
-
+      
 
       
         case 2:
@@ -101,9 +110,10 @@ public class StudentManager{
             System.out.println("--------Student List--------");
             for(int i=0;i<student.size();i++){
                 Student s = student.get(i);
-                System.out.println(s.name);
-                System.out.println(s.age);
-                System.out.println(s.cgpa);
+                System.out.println("ID: "+s.id);
+                System.out.println("Name: "+s.name);
+                System.out.println("Age: "+s.age);
+                System.out.println("CGPA: "+s.cgpa);
                 System.out.println("--------------------------");
             }
         }

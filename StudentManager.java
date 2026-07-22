@@ -8,7 +8,7 @@ class Student {
     int age;
     double cgpa;
 
-    Student(int id,String name,int age,double cgpa){
+    Student(int id,String name,int age, double cgpa){
         this.id=id;
         this.name=name;
         this.age=age;
@@ -31,7 +31,7 @@ public class StudentManager{
       System.out.println("     STUDENT MANAGER       "); 
       System.out.println("========================="); 
       System.out.println("Enter choice");
-      System.out.println("1 To add student\n2 To delete\n3 To view all students.\n4 To exit");
+      System.out.println("1 Add student\n2 Delete\n3View all students\n4 Update Student\n5 Exit");
       choice = sc.nextInt();
       
      
@@ -41,13 +41,17 @@ public class StudentManager{
       System.out.println("Enter ID");
       int id =sc.nextInt();
       sc.nextLine();
-      
+      boolean exists = false;
+
       for (Student s : student) {
             if (s.id==id) {
                 System.out.println("ID already exists");
+                exists=true;
                 break;
             }
         }
+     if (!exists) {
+        
      
       System.out.println("Enter Name");
       String name=sc.nextLine();
@@ -57,17 +61,19 @@ public class StudentManager{
 
       System.out.println("Enter CGPA");
       double cgpa = sc.nextDouble();
+      sc.nextLine();
 
+      if (age<=0 || cgpa<0 || cgpa>10) {
+        System.out.println("Invalid Input");
+      }
+      else{
       student.add(new Student(id, name, age, cgpa));
-
- 
-    
-
       
       System.out.println("\nStudent Added Successfully!");
       
-            break;
-      
+      }
+     }
+     break;
 
       
         case 2:
@@ -78,7 +84,7 @@ public class StudentManager{
 
     System.out.println("Enter Student ID to be removed:");
     int toremove = sc.nextInt();
-
+    
     boolean found=false;
     for(int i=0;i<student.size();i++){
         if(student.get(i).id==toremove){
@@ -97,9 +103,7 @@ public class StudentManager{
         break;
             
 
-
-
-        
+   
         case 3:
 
         if (student.isEmpty()) {
@@ -108,8 +112,7 @@ public class StudentManager{
 
         else{ 
             System.out.println("--------Student List--------");
-            for(int i=0;i<student.size();i++){
-                Student s = student.get(i);
+            for(Student s : student){
                 System.out.println("ID: "+s.id);
                 System.out.println("Name: "+s.name);
                 System.out.println("Age: "+s.age);
@@ -120,15 +123,17 @@ public class StudentManager{
             break;
         
 
-
-
         case 4:
+
+            break;
+
+        case 5:
             System.out.println("Thank You");
                sc.close();
             return;
 
         default:
-            System.out.println("Enter a valic choice");
+            System.out.println("Enter a valid choice");
             break;
       }
     

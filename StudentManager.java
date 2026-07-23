@@ -124,7 +124,40 @@ public class StudentManager{
         
 
         case 4:
+            boolean ufound=false;
 
+        System.out.println("Enter student id of student to be updated");
+        int  nid= sc.nextInt();
+        sc.nextLine();
+        for(Student s: student){
+            if(nid==s.id){
+                ufound=true;
+                System.out.println("Enter New name");
+                String Nname=sc.nextLine();
+                s.name=Nname;
+
+                System.out.println("Enter New age");
+                int Nage = sc.nextInt();
+                s.age=Nage;
+
+                System.out.println("Enter New cgpa");
+                double Ncgpa=sc.nextDouble();
+                s.cgpa=Ncgpa;
+
+                    if (s.age <= 0 || s.cgpa < 0 || s.cgpa > 10) {
+                    System.out.println("Invalid input.");
+                    } else {
+                    System.out.println("Student updated successfully.");
+                    }
+                
+            }
+          
+        }
+         if (!ufound) {
+                
+            
+                System.out.println("Student ID not found.");
+            }
             break;
 
         case 5:

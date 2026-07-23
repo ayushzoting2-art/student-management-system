@@ -133,22 +133,21 @@ public class StudentManager{
             if(nid==s.id){
                 ufound=true;
                 System.out.println("Enter New name");
-                String Nname=sc.nextLine();
-                s.name=Nname;
+                s.name = sc.nextLine();
 
                 System.out.println("Enter New age");
-                int Nage = sc.nextInt();
-                s.age=Nage;
+                int newAge = sc.nextInt();
 
-                System.out.println("Enter New cgpa");
-                double Ncgpa=sc.nextDouble();
-                s.cgpa=Ncgpa;
+                System.out.println("Enter New CGPA");
+                double newCgpa = sc.nextDouble();
 
-                    if (s.age <= 0 || s.cgpa < 0 || s.cgpa > 10) {
+                if (newAge <= 0 || newCgpa < 0 || newCgpa > 10) {               
                     System.out.println("Invalid input.");
-                    } else {
+                } else {
+                    s.age = newAge;
+                    s.cgpa = newCgpa;
                     System.out.println("Student updated successfully.");
-                    }
+                }
                 
             }
           

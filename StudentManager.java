@@ -117,7 +117,7 @@ public class StudentManager{
                 System.out.println("Name: "+s.name);
                 System.out.println("Age: "+s.age);
                 System.out.println("CGPA: "+s.cgpa);
-                System.out.println("--------------------------");
+                System.out.println("==========================");
             }
         }
             break;
@@ -152,9 +152,7 @@ public class StudentManager{
             }
           
         }
-         if (!ufound) {
-                
-            
+         if (!ufound) {           
                 System.out.println("Student ID not found.");
             }
             break;
@@ -167,13 +165,8 @@ public class StudentManager{
         default:
             System.out.println("Enter a valid choice");
             break;
-      }
-    
-
-
-     
-    }
-
+            }    
+        }
     }
 }
 

@@ -75,41 +75,7 @@ public class StudentManager{
       switch (choice) {
       case 1: manager.addstudent(sc, student);
          
-    //   System.out.println("Enter ID");
-    //   int id =sc.nextInt();
-    //   sc.nextLine();
-    //   boolean exists = false;
-
-    //   for (Student s : student) {
-    //         if (s.id==id) {
-    //             System.out.println("ID already exists");
-    //             exists=true;
-    //             break;
-    //         }
-    //     }
-    //  if (!exists) {
-        
-     
-    //   System.out.println("Enter Name");
-    //   String name=sc.nextLine();
-
-    //   System.out.println("Enter age");
-    //   int age = sc.nextInt();
-
-    //   System.out.println("Enter CGPA");
-    //   double cgpa = sc.nextDouble();
-    //   sc.nextLine();
-
-    //   if (age<=0 || cgpa<0 || cgpa>10) {
-    //     System.out.println("Invalid Input");
-    //   }
-    //   else{
-    //   student.add(new Student(id, name, age, cgpa));
-      
-    //   System.out.println("\nStudent Added Successfully!");
-      
-    //   }
-    //  }
+    
      break;
 
       

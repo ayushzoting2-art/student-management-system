@@ -16,10 +16,12 @@ class Student {
     }
 }
 
+
 public class StudentManager{
 
-    void addstudent(Scanner sc, ArrayList<Student> student){
-              System.out.println("Enter ID");
+//Add Student
+void addstudent(Scanner sc, ArrayList<Student> student){
+System.out.println("Enter ID");
       int id =sc.nextInt();
       sc.nextLine();
       boolean exists = false;
@@ -55,34 +57,13 @@ public class StudentManager{
       }
      }
     }
-    public static void main(String[] args) {
-      int choice;
-      Scanner sc=new Scanner(System.in);
-      ArrayList<Student> student = new ArrayList<>();
 
-     StudentManager manager = new StudentManager();
-   
 
-      while(true){
-      System.out.println("=========================");
-      System.out.println("     STUDENT MANAGER       "); 
-      System.out.println("========================="); 
-      System.out.println("Enter choice");
-      System.out.println("1 Add student\n2 Delete\n3View all students\n4 Update Student\n5 Exit");
-      choice = sc.nextInt();
-      
-     
-      switch (choice) {
-      case 1: manager.addstudent(sc, student);
-         
-    
-     break;
-
-      
-        case 2:
-    if (student.isEmpty()) {
+    //Delete Student
+    void deletestudent(Scanner sc, ArrayList<Student> student){
+        if (student.isEmpty()) {
         System.out.println("Not Student to Delete");
-        break;
+        return;
     }
 
     System.out.println("Enter Student ID to be removed:");
@@ -101,15 +82,11 @@ public class StudentManager{
     if (!found) {
         System.out.println("Student not found");
     }
-          
-  
-        break;
-            
+    }
 
-   
-        case 3:
-
-        if (student.isEmpty()) {
+    //View Students
+    void viewstudents(ArrayList <Student> student){
+                if (student.isEmpty()) {
             System.out.println("No student present");
         }
 
@@ -123,11 +100,11 @@ public class StudentManager{
                 System.out.println("==========================");
             }
         }
-            break;
-        
+    }
 
-        case 4:
-            boolean ufound=false;
+    //Update Students
+    void updatestudents(ArrayList<Student>student, Scanner sc){
+        boolean ufound=false;
 
         System.out.println("Enter student id of student to be updated");
         int  nid= sc.nextInt();
@@ -158,6 +135,41 @@ public class StudentManager{
          if (!ufound) {           
                 System.out.println("Student ID not found.");
             }
+    }
+
+    public static void main(String[] args) {
+      int choice;
+      Scanner sc=new Scanner(System.in);
+      ArrayList<Student> student = new ArrayList<>();
+
+     StudentManager manager = new StudentManager();
+   
+
+      while(true){
+      System.out.println("=========================");
+      System.out.println("     STUDENT MANAGER       "); 
+      System.out.println("========================="); 
+      System.out.println("Enter choice");
+      System.out.println("1 Add student\n2 Delete\n3View all students\n4 Update Student\n5 Exit");
+      choice = sc.nextInt();
+      
+     
+      switch (choice) {
+      case 1: manager.addstudent(sc, student);
+         break;
+
+      
+        case 2:manager.deletestudent(sc, student);
+    
+        break;
+            
+
+   
+        case 3:manager.viewstudents(student);
+            break;
+        
+
+        case 4:manager.updatestudents(student, sc);
             break;
 
         case 5:

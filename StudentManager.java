@@ -137,6 +137,34 @@ System.out.println("Enter ID");
             }
     }
 
+    //Search Student by id
+    void searchstudent(Scanner sc, ArrayList <Student> student){
+        boolean stat = false;
+        if(student.isEmpty()){
+            stat=true;
+            System.out.println("No student present");
+            return;
+        }
+
+
+        System.out.println("Enter Student ID to be searched");
+        int sid=sc.nextInt();
+       
+        if (!stat) {
+            
+        
+        for(Student s: student){
+            if (sid==s.id) {
+
+                System.out.println("ID of Student is:"+s.id);
+                System.out.println("Name of Student is:"+s.name);
+                System.out.println("CGPA of Student is:"+s.cgpa);
+                
+            }
+        }
+    }
+    }
+
     public static void main(String[] args) {
       int choice;
       Scanner sc=new Scanner(System.in);
@@ -150,7 +178,7 @@ System.out.println("Enter ID");
       System.out.println("     STUDENT MANAGER       "); 
       System.out.println("========================="); 
       System.out.println("Enter choice");
-      System.out.println("1 Add student\n2 Delete\n3View all students\n4 Update Student\n5 Exit");
+      System.out.println("1 Add student\n2 Delete\n3View all students\n4 Update Student\n5 Search Student by ID\n6 Exit");
       choice = sc.nextInt();
       
      
@@ -172,7 +200,10 @@ System.out.println("Enter ID");
         case 4:manager.updatestudents(student, sc);
             break;
 
-        case 5:
+        case 5: manager.searchstudent(sc,student);
+            break;
+
+        case 6:
             System.out.println("Thank You");
                sc.close();
             return;

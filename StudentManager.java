@@ -35,7 +35,7 @@ System.out.println("Enter ID");
         }
      if (!exists) {
         
-     
+      
       System.out.println("Enter Name");
       String name=sc.nextLine();
 
@@ -149,18 +149,21 @@ System.out.println("Enter ID");
 
         System.out.println("Enter Student ID to be searched");
         int sid=sc.nextInt();
-       
+       boolean found = false;
         if (!stat) {
             
         
         for(Student s: student){
             if (sid==s.id) {
-
+                found = true;
                 System.out.println("ID of Student is:"+s.id);
                 System.out.println("Name of Student is:"+s.name);
                 System.out.println("CGPA of Student is:"+s.cgpa);
                 
             }
+        }
+        if(!found){
+            System.out.println("Student not found");
         }
     }
     }

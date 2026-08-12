@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-class Student {
+private class Student {
     int id; 
     String name;
     int age;
@@ -20,13 +20,13 @@ class Student {
 public class StudentManager{
 
 //Add Student
-void addstudent(Scanner sc, ArrayList<Student> student){
+void AddStudent(Scanner sc, ArrayList<Student> students){
 System.out.println("Enter ID");
       int id =sc.nextInt();
       sc.nextLine();
       boolean exists = false;
 
-      for (Student s : student) {
+      for (Student s : students) {
             if (s.id==id) {
                 System.out.println("ID already exists");
                 exists=true;
@@ -50,7 +50,7 @@ System.out.println("Enter ID");
         System.out.println("Invalid Input");
       }
       else{
-      student.add(new Student(id, name, age, cgpa));
+      students.add(new Student(id, name, age, cgpa));
       
       System.out.println("\nStudent Added Successfully!");
       
@@ -60,8 +60,8 @@ System.out.println("Enter ID");
 
 
     //Delete Student
-    void deletestudent(Scanner sc, ArrayList<Student> student){
-        if (student.isEmpty()) {
+    void DeleteStudent(Scanner sc, ArrayList<Student> students){
+        if (students.isEmpty()) {
         System.out.println("Not Student to Delete");
         return;
     }
@@ -70,11 +70,11 @@ System.out.println("Enter ID");
     int toremove = sc.nextInt();
     
     boolean found=false;
-    for(int i=0;i<student.size();i++){
-        if(student.get(i).id==toremove){
-            student.remove(i);
+    for(int i=0;i<students.size();i++){
+        if(students.get(i).id==toremove){
+            students.remove(i);
             found=true;
-            System.out.println("Removed student succesfully");
+            System.out.println("Removed students succesfully");
             break;
         }
     }
@@ -85,14 +85,14 @@ System.out.println("Enter ID");
     }
 
     //View Students
-    void viewstudents(ArrayList <Student> student){
-                if (student.isEmpty()) {
-            System.out.println("No student present");
+    void ViewStudents(ArrayList <Student> students){
+                if (students.isEmpty()) {
+            System.out.println("No students present");
         }
 
         else{ 
             System.out.println("--------Student List--------");
-            for(Student s : student){
+            for(Student s : students){
                 System.out.println("ID: "+s.id);
                 System.out.println("Name: "+s.name);
                 System.out.println("Age: "+s.age);
@@ -103,13 +103,13 @@ System.out.println("Enter ID");
     }
 
     //Update Students
-    void updatestudents(ArrayList<Student>student, Scanner sc){
+    void UpdateStudents(ArrayList<Student>students, Scanner sc){
         boolean ufound=false;
 
-        System.out.println("Enter student id of student to be updated");
+        System.out.println("Enter students id of students to be updated");
         int  nid= sc.nextInt();
         sc.nextLine();
-        for(Student s: student){
+        for(Student s: students){
             if(nid==s.id){
                 ufound=true;
                 System.out.println("Enter New name");
@@ -138,40 +138,39 @@ System.out.println("Enter ID");
     }
 
     //Search Student by id
-    void searchstudent(Scanner sc, ArrayList <Student> student){
-        boolean stat = false;
-        if(student.isEmpty()){
-            stat=true;
-            System.out.println("No student present");
-            return;
-        }
+    void SearchStudent(Scanner sc, ArrayList<Student> students) {
 
+    if (students.isEmpty()) {
+        System.out.println("No students present");
+        return;
+    }
 
-        System.out.println("Enter Student ID to be searched");
-        int sid=sc.nextInt();
-       boolean found = false;
-        if (!stat) {
-            
-        
-        for(Student s: student){
-            if (sid==s.id) {
-                found = true;
-                System.out.println("ID of Student is:"+s.id);
-                System.out.println("Name of Student is:"+s.name);
-                System.out.println("CGPA of Student is:"+s.cgpa);
-                
-            }
-        }
-        if(!found){
-            System.out.println("Student not found");
+    System.out.println("Enter Student ID to be searched");
+    int sid = sc.nextInt();
+
+    boolean found = false;
+
+    for (Student s : students) {
+        if (sid == s.id) {
+            found = true;
+
+            System.out.println("ID of Student is: " + s.id);
+            System.out.println("Name of Student is: " + s.name);
+            System.out.println("CGPA of Student is: " + s.cgpa);
+
+            break;
         }
     }
+
+    if (!found) {
+        System.out.println("Student not found");
     }
+}
 
     public static void main(String[] args) {
       int choice;
       Scanner sc=new Scanner(System.in);
-      ArrayList<Student> student = new ArrayList<>();
+      ArrayList<Student> students = new ArrayList<>();
 
      StudentManager manager = new StudentManager();
    
@@ -181,29 +180,29 @@ System.out.println("Enter ID");
       System.out.println("     STUDENT MANAGER       "); 
       System.out.println("========================="); 
       System.out.println("Enter choice");
-      System.out.println("1 Add student\n2 Delete\n3View all students\n4 Update Student\n5 Search Student by ID\n6 Exit");
+      System.out.println("1 Add students\n2 Delete\n3 View all students\n4 Update Student\n5 Search Student by ID\n6 Exit");
       choice = sc.nextInt();
       
      
       switch (choice) {
-      case 1: manager.addstudent(sc, student);
+      case 1: manager.AddStudent(sc, students);
          break;
 
       
-        case 2:manager.deletestudent(sc, student);
+        case 2:manager.DeleteStudent(sc, students);
     
         break;
             
 
    
-        case 3:manager.viewstudents(student);
+        case 3:manager.ViewStudents(students);
             break;
         
 
-        case 4:manager.updatestudents(student, sc);
+        case 4:manager.UpdateStudents(students, sc);
             break;
 
-        case 5: manager.searchstudent(sc,student);
+        case 5: manager.SearchStudent(sc,students);
             break;
 
         case 6:
@@ -218,5 +217,4 @@ System.out.println("Enter ID");
         }
     }
 }
-
 

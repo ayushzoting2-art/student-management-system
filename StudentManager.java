@@ -20,16 +20,17 @@ class Student {
     public int getId(){
     return id;
     }
-    
-    public void getId(int id){
+    public void setId(int id){
+        
         this.id=id;
     }
-       //Name
+
+    //Name
     public String getName(){
     return name;
     }
     
-    public void getName(String name){
+    public void setName(String name){
         this.name=name;
     }
         //CG
@@ -37,15 +38,15 @@ class Student {
     return cgpa;
     }
     
-    public void getCg(int id){
-        this.id=id;
+    public void setCg(double cgpa){
+        this.cgpa=cgpa;
     }
         //Age
     public int getAge(){
     return age;
     }
     
-    public void getIAge(int age){
+    public void setAge(int age){
         this.age=age;
     } 
 
@@ -62,7 +63,7 @@ System.out.println("Enter ID");
       sc.nextLine();
       boolean exists = false;
       for (Student s : students) {
-            if (s.id==id) {
+            if (s.getId()==id) {
                 System.out.println("ID already exists");
                 exists=true;
                 break;
@@ -72,7 +73,7 @@ System.out.println("Enter ID");
         
       
       System.out.println("Enter Name");
-      students.setName=sc.nextLine();
+      String name=sc.nextLine();
 
       System.out.println("Enter age");
       int age = sc.nextInt();
@@ -106,7 +107,7 @@ System.out.println("Enter ID");
     
     boolean found=false;
     for(int i=0;i<students.size();i++){
-        if(students.get(i).id==toremove){
+        if(students.get(i).getId()==toremove){
             students.remove(i);
             found=true;
             System.out.println("Removed students succesfully");
@@ -128,13 +129,14 @@ System.out.println("Enter ID");
         else{ 
             System.out.println("--------Student List--------");
             for(Student s : students){
-                System.out.println("ID: "+s.id);
-                System.out.println("Name: "+s.name);
-                System.out.println("Age: "+s.age);
-                System.out.println("CGPA: "+s.cgpa);
+                System.out.println("ID: "+s.getId());
+                System.out.println("Name: "+s.getName());
+                System.out.println("Age: "+s.getAge());
+                System.out.println("CGPA: "+s.getCg());
                 System.out.println("==========================");
             }
         }
+
     }
 
     //Update Students
@@ -145,22 +147,25 @@ System.out.println("Enter ID");
         int  nid= sc.nextInt();
         sc.nextLine();
         for(Student s: students){
-            if(nid==s.id){
+            if(nid==s.getId()){
                 ufound=true;
                 System.out.println("Enter New name");
-                s.name = sc.nextLine();
+                String newName = sc.nextLine();
 
                 System.out.println("Enter New age");
                 int newAge = sc.nextInt();
 
                 System.out.println("Enter New CGPA");
                 double newCgpa = sc.nextDouble();
+                sc.nextLine();
 
                 if (newAge <= 0 || newCgpa < 0 || newCgpa > 10) {               
                     System.out.println("Invalid input.");
                 } else {
-                    s.age = newAge;
-                    s.cgpa = newCgpa;
+
+                    s.setName(newName);
+                    s.setAge(newAge); 
+                    s.setCg(newCgpa);
                     System.out.println("Student updated successfully.");
                 }
                 
@@ -186,12 +191,13 @@ System.out.println("Enter ID");
     boolean found = false;
 
     for (Student s : students) {
-        if (sid == s.id) {
+        if (sid == s.getId()) {
             found = true;
 
-            System.out.println("ID of Student is: " + s.id);
-            System.out.println("Name of Student is: " + s.name);
-            System.out.println("CGPA of Student is: " + s.cgpa);
+            System.out.println("ID of Student is: " + s.getId());
+            System.out.println("Name of Student is: " + s.getName());
+            System.out.println("Age of Student is: " + s.getAge());
+            System.out.println("CGPA of Student is: " + s.getCg());
 
             break;
         }
@@ -200,9 +206,7 @@ System.out.println("Enter ID");
     if (!found) {
         System.out.println("Student not found");
     }
-    else{
-        System.out.println("Enter a valid ID");
-    }
+
 }
 
     public static void main(String[] args) {
@@ -210,7 +214,7 @@ System.out.println("Enter ID");
       Scanner sc=new Scanner(System.in);
       ArrayList<Student> students = new ArrayList<>();
 
-     StudentManager manager = new StudentManager();
+     Manager manager = new Manager();
    
 
       while(true){
